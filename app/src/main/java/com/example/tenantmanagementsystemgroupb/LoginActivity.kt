@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
             binding.emailEditText.setText(registeredEmail)
         }
 
-        // Explicit Intent: open MainActivity
+        // Explicit Intent: open MainActivity, carrying the email for the drawer header
         binding.loginButton.setOnClickListener {
             val email = binding.emailEditText.text.toString().trim()
             val password = binding.passwordEditText.text.toString()
@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("EMAIL", email)   // NEW in Practical 3
             startActivity(intent)
             finish()
         }
